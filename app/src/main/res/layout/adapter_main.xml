@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <!--定义在布局中使用的数据-->
+        <variable
+            name="user"
+            type="lwb.blcs.databinding.User"/>
+        <!--定义点击事件-->
+        <variable
+            name="click"
+            type="lwb.blcs.databinding.MyOnClickListen"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!--给控件赋值单向绑定@{}  双向绑定@={}-->
+        <!-- 给点击事件传值user.name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickName(user.name)}"
+            android:layout_weight="1"
+            android:text="@={user.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="@{()->click.onClickPhone(user.phone)}"
+            android:text="@={user.phone}" />
+
+        <!-- 设置点击事件-->
+        <!-- 设置自定义图片属性 imageUrl-->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="@{click.onClickImage}"
+            app:imageUrl="@{user.imgUrl}"
+            />
+    </LinearLayout>
+</layout>
